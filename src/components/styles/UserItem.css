@@ -1,0 +1,19 @@
+#user-item {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;    /* Hide overflow */
+    text-overflow: ellipsis; /* Show ellipsis for overflowed text */
+  }
+  
+  span {
+    flex-grow: 1; /* Allow the span to grow and take available space */
+  }
+  @media (max-width: 768px) {
+    #user-item {
+      padding: 10px; /* Adjust padding for smaller screens */
+    }
+  
+    span {
+      font-size: 14px; /* Decrease font size for smaller screens */
+    }
+  }
+    

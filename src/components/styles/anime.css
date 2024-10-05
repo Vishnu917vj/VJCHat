@@ -1,0 +1,8 @@
+.typing-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; /* Adjust as needed */
+    overflow: hidden; /* Prevent overflow */
+  }
+  

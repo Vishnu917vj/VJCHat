@@ -1,0 +1,72 @@
+.chatbox-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f3f5; /* Light background */
+  height: 100vh;
+  margin-top: 10px;
+}
+
+.chatbox {
+  background-color: white;
+  width: 100%;
+  max-width: 900px; /* Limit max-width for larger screens */
+  height: 90vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px;
+  overflow-y: auto; /* Allows scrolling inside the chat */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+  .chatbox {
+    height: 80vh;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chatbox {
+    height: 75vh;
+    padding: 10px;
+  }
+}
+
+.error-message {
+  color: #ff4d4f; /* Bright red for errors */
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+}
+
+#user-item {
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Apply hover styles */
+#user-item:hover {
+  background-color: rgb(69, 158, 231);
+  color: white;
+}
+
+/* Optional: Scrollbar styling for chatbox */
+.chatbox::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chatbox::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.chatbox::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}

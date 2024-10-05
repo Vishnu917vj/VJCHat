@@ -1,0 +1,53 @@
+/* Skeleton container for layout */
+.chat-skeleton-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  /* Skeleton block */
+  .skeleton {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  
+  /* Skeleton size variants */
+  .short {
+    width: 30%;
+    height: 20px;
+  }
+  
+  .medium {
+    width: 50%;
+    height: 20px;
+  }
+  
+  .long {
+    width: 70%;
+    height: 20px;
+  }
+  
+  /* Left and right positioning */
+  .skeleton-left {
+    align-self: flex-start;
+  }
+  
+  .skeleton-right {
+    align-self: flex-end;
+  }
+  
+  /* Pulse animation */
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
