@@ -4,12 +4,10 @@ import Modal from 'react-bootstrap/Modal';
 import { ChatState } from '../../context/chatProvider';
 import axios from 'axios';
 import ToastEx from './ToastEx';
-import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Form from 'react-bootstrap/Form';
 
 function ProfileModel() {
-    const { user,setUser} = ChatState();
+    const { user, setUser } = ChatState();
     const [username, setUsername] = useState("");
     const [pic, setPic] = useState("");
     const [loading, setLoading] = useState(false);
@@ -34,7 +32,7 @@ function ProfileModel() {
                 setLoading(false);
                 window.alert("Profile pic changed");
                 setUser({ ...user, pic: data.profilePicture });
-                localStorage.setItem("userInfo", JSON.stringify(user));
+                localStorage.setItem("userInfo", JSON.stringify({ ...user, pic: data.profilePicture }));
                 window.location.reload();
             } catch (err) {
                 setLoading(false);
@@ -58,8 +56,8 @@ function ProfileModel() {
                 const { data } = await axios.post("/api/users/updateusername", { name: username }, config);
                 setLoading(false);
                 window.alert("Username changed");
-                setUser({ ...user, username: data.username ,name:username});
-                localStorage.setItem("userInfo", JSON.stringify(user));
+                setUser({ ...user, username: data.username });
+                localStorage.setItem("userInfo", JSON.stringify({ ...user, username: data.username }));
                 window.location.reload();
             } catch (err) {
                 setLoading(false);
@@ -74,17 +72,17 @@ function ProfileModel() {
         }
     };
 
-    const post = async (pic) => {
+    const post = async (file) => {
         setLoading(true);
-        if (!pic) {
+        if (!file) {
             window.alert("Please select a valid image");
             setLoading(false);
             return;
         }
 
-        if (pic.type === 'image/jpeg' || pic.type === 'image/png') {
+        if (file.type === 'image/jpeg' || file.type === 'image/png') {
             const data = new FormData();
-            data.append("file", pic);
+            data.append("file", file);
             data.append("upload_preset", "vjChat");
             data.append("cloud_name", "degkuikdy");
 
@@ -129,6 +127,7 @@ function ProfileModel() {
                                     type="text"
                                     placeholder="John Doe"
                                     onChange={(e) => setUsername(e.target.value)}
+                                    value={username}  // Bound the value to allow spaces
                                 />
                             </Form.Group>
                             <Button type="button" onClick={handleChangeUserName} disabled={loading}>
@@ -136,16 +135,15 @@ function ProfileModel() {
                             </Button>
                         </div>
                         <div>
-                        <Form.Group controlId="formBasicPhoto123">
-    <Form.Label>Upload your photo</Form.Label>
-    <input
-        type="file"
-        placeholder="image.png"
-        onChange={(e) => post(e.target.files[0])}
-        onClick={() => (console.log("clicked"))}
-        style={{ display: 'block' }} // Ensure it's displayed 
-    />
-</Form.Group>
+                            <Form.Group controlId="formBasicPhoto123">
+                                <Form.Label>Upload your photo</Form.Label>
+                                <input
+                                    type="file"
+                                    placeholder="image.png"
+                                    onChange={(e) => post(e.target.files[0])}
+                                    style={{ display: 'block' }}
+                                />
+                            </Form.Group>
 
                             <Button type="button" onClick={handleChangePic} disabled={loading}>
                                 Change Profile Pic

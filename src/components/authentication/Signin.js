@@ -9,7 +9,7 @@ const Signin = () => {
     const [password, setPassword] = useState("");
     const [confirmpass, setConfirmpass] = useState("");
     const [email, setEmail] = useState("");
-    const [pic, setPic] = useState("");
+    const [pic, setPic] = useState();
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 

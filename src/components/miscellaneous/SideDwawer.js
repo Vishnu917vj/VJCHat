@@ -29,7 +29,10 @@ function SideDwawer() {
         <Col>
         <Dropdown>
       <Dropdown.Toggle variant="white" id="dropdown-basic">
-      <i className="fa-solid fa-bell"></i>
+    <i className="fa-solid fa-bell"></i> <span class="badge badge-danger">{
+      notifications.length>0?notifications.length:""
+}</span>
+
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
@@ -39,6 +42,7 @@ function SideDwawer() {
         {
           !notifications.length && <Dropdown.Item >No Notifications</Dropdown.Item>
         }
+
         {
           notifications.map((notification)=>(
             <Dropdown.Item onClick={()=>{
